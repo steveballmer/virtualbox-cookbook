@@ -28,5 +28,12 @@ when 'windows'
   default['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/4.2.12/VirtualBox-4.2.12-84980-Win.exe'
   default['virtualbox']['version'] = Vbox::Helpers.vbox_version(node['virtualbox']['url'])
 when 'debian', 'rhel', 'fedora'
-  default['virtualbox']['version'] = '4.3'
+  if node['platform'] == 'debian' && Chef::VersionConstraint.new('>= 8.0').include?(node['platform_version']) ||
+     node['platform'] == 'ubuntu' && Chef::VersionConstraint.new('>= 16.04').include?(node['platform_version'])
+    default['virtualbox']['version'] = '5.1'
+    default['virtualbox']['apt']['key'] = 'https://www.virtualbox.org/download/oracle_vbox_2016.asc'
+  else
+    default['virtualbox']['version'] = '4.3'
+    default['virtualbox']['apt']['key'] = 'http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc'
+  end
 end
