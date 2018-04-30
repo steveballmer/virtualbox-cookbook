@@ -1,21 +1,22 @@
 ---
 driver_plugin: vagrant
 
+provisioner:
+  name: chef_zero
+  product_name: chef
+  product_version: 13.8.5
+
 platforms:
-- name: debian-6
-  driver_config:
-    box: opscode-debian-6.0.7
-    box_url: http://opscode-vm.s3.amazonaws.com/vagrant/opscode_debian-6.0.7_chef-11.2.0.box
-    require_chef_omnibus: 11.4.0
-- name: ubuntu-12.04
-  driver_config:
-    box: canonical-ubuntu-12.04
-    box_url: http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
-    require_chef_omnibus: true
-- name: centos-6.3
-  driver_config:
-    box: opscode-centos-6.3
-    box_url: http://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box
+  - name: ubuntu-16.04
+    driver:
+      box: bento/ubuntu-16.04
+      box_url: https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04
+      box_version: 2.3.1
+  - name: centos-7.3
+    driver:
+      box: bento/centos-7.3
+      box_url: https://atlas.hashicorp.com/bento/boxes/centos-7.3
+      box_version: 2.3.2
 
 suites:
 - name: default
