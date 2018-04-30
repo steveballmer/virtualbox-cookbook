@@ -13,5 +13,5 @@ end
 depends "dmg"
 depends "windows"
 depends "apt"
-depends "yum", '~> 3.1'
+depends "yum"
 depends "apache2"
