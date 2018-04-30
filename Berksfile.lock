@@ -7,7 +7,7 @@ GRAPH
   apache2 (5.0.1)
   apt (7.0.0)
   dmg (4.1.1)
-  virtualbox (1.0.4)
+  virtualbox (1.1.0)
     apache2 (>= 0.0.0)
     apt (>= 0.0.0)
     dmg (>= 0.0.0)
